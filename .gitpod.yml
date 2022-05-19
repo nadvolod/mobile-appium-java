@@ -1,4 +1,11 @@
-
+tasks:
+  - before: |
+      echo 'Run before'
+    init: |
+      mvn clean install -DskipTests=true
+      clear
+    command: echo 'Ready to test!'
 vscode:
   extensions:
     - vscjava.vscode-java-pack
+    - vscjava.vscode-java-test
