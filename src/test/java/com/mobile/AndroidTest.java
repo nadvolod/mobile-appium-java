@@ -5,6 +5,7 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -50,12 +51,15 @@ public class AndroidTest {
         capabilities.setCapability("idleTimeout", "90");
         capabilities.setCapability("noReset", "true");
         capabilities.setCapability("newCommandTimeout", "90");
+        capabilities.setCapability("language", "en");
         capabilities.setCapability("appWaitActivity", "com.swaglabsmobileapp.MainActivity");
         capabilities.setCapability("name", name.getMethodName());
     }
 
     @Test
     public void shouldOpenApp() throws MalformedURLException {
+        // numerous ways exist for setting app name
+        // https://docs.saucelabs.com/dev/test-configuration-options/#app
         capabilities.setCapability("app",
                 "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
 
@@ -75,6 +79,7 @@ public class AndroidTest {
     }
 
     @Test
+    @Ignore("just a demo of setting dynamic app name")
     public void setAppNameDynamically() throws MalformedURLException {
         /*
          * We can dynamically set an app name from environment variables

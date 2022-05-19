@@ -46,9 +46,13 @@ public class IOSNativeAppTest {
         //Find all iPhone devices that aren't 5 or 5S: ^(iPhone.*)(?!5|5S)$
         capabilities.setCapability("deviceName", "^(iPhone.*)(?!5|5S)$");
         capabilities.setCapability("name", name.getMethodName());
+        // numerous ways exist for setting app name
+        // https://docs.saucelabs.com/dev/test-configuration-options/#app
 
-        capabilities.setCapability("app",
-                "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/iOS.RealDevice.SauceLabs.Mobile.Sample.app.2.7.1.ipa");
+//        String gitHubAppPath = "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/iOS.RealDevice.SauceLabs.Mobile.Sample.app.2.7.1.ipa";
+//        capabilities.setCapability("app",gitHubAppPath);
+        String appPathReactNativeVersion = "https://github.com/saucelabs/my-demo-app-rn/releases/download/v1.3.0/iOS-Real-Device-MyRNDemoApp.1.3.0-162.ipa";
+        capabilities.setCapability("app",appPathReactNativeVersion);
 
         driver = new IOSDriver(
                 new URL("https://" + System.getenv("SAUCE_USERNAME") + ":" +
@@ -62,7 +66,7 @@ public class IOSNativeAppTest {
     @Test
     public void shouldOpenApp() {
         WebDriverWait wait = new WebDriverWait(getDriver(), 10000);
-        WebElement loginField = wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy.AccessibilityId("test-Username")));
+        WebElement loginField = wait.until(ExpectedConditions.visibilityOfElementLocated(MobileBy.AccessibilityId("Sauce Labs Backpack")));
         assertTrue(loginField.isDisplayed());
     }
 }
