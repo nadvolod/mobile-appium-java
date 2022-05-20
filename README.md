@@ -39,7 +39,7 @@ Mobile automated testing using Appium and Java
  * Make sure you are logged into GitHub
  * Click the Fork in the upper right of the GitHub.
  * Give the repo a ⭐ while you're here 🤩
-3. In the browser address bar, prepend the GitHub url (`https://github.com/USERNAME/automation-best-practices-java`) with `https://gitpod.io/#`
+3. In the browser address bar, your GitHub url (`https://github.com/USERNAME/this-repo-name`) with `https://gitpod.io/#`
     * The resulting url should look as follows:
    
       > https://gitpod.io/#https://github.com/USERNAME/mobile-appium-java
@@ -108,14 +108,10 @@ Setup environment variables on your system
 * [Mac/Linux](https://docs.saucelabs.com/basics/environment-variables/#setting-up-environment-variables-on-macos-and-linux-systems)
 * [Windows](https://docs.saucelabs.com/basics/environment-variables/#setting-up-environment-variables-on-windows-systems)
 
-Navigate to the directory of where you cloned your repo
-
-`cd YOUR_FORK_DIR/automation-best-practices/workshop`
-
 Run sanity tests
 
 ```java
-mvn test -Dtest="SanityTest#functionalWorks" -X
+mvn test -Dtest="IOSTest" -X
 ```
 
 <br/>
