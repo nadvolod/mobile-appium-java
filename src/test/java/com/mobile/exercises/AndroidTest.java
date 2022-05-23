@@ -1,5 +1,6 @@
-package com.mobile;
+package com.mobile.exercises;
 
+import com.mobile.SauceTestWatcher;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -51,7 +52,6 @@ public class AndroidTest {
         capabilities.setCapability("idleTimeout", "90");
         capabilities.setCapability("noReset", "true");
         capabilities.setCapability("newCommandTimeout", "90");
-        capabilities.setCapability("language", "en");
         capabilities.setCapability("appWaitActivity", "com.swaglabsmobileapp.MainActivity");
         capabilities.setCapability("name", name.getMethodName());
     }
