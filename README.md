@@ -140,3 +140,7 @@ mvn test -Dtest="IOSTest" -X
 
 ### ✅👏Environment setup is complete if tests passed
 
+## Extra resources
+
+- [Setup appium inspector](https://github.com/appium/appium-inspector#installation)
+- [Appium options for sauce](https://docs.saucelabs.com/dev/test-configuration-options/#mobile-app-appium-capabilities-required)
