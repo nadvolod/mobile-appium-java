@@ -1,11 +1,10 @@
-package com.mobile.exercises;
+package com.mobile;
 
 import com.mobile.SauceTestWatcher;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -16,7 +15,7 @@ import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.util.Assert;
+
 import static org.assertj.core.api.Assertions.*;
 
 import java.net.MalformedURLException;
@@ -25,7 +24,7 @@ import java.net.URL;
 /**
  * Android Native App Tests
  */
-public class AndroidTest {
+public class AndroidSolutionTest {
     @Rule
     public TestName name = new TestName() {
         public String getMethodName() {

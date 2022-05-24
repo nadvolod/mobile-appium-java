@@ -18,7 +18,7 @@ import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
 
-public class IOSExerciseSolutionTest {
+public class IOSSolutionTest {
     @Rule
     public TestName name = new TestName() {
         public String getMethodName() {
