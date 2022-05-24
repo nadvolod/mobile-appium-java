@@ -144,3 +144,5 @@ mvn test -Dtest="IOSTest" -X
 
 - [Setup appium inspector](https://github.com/appium/appium-inspector#installation)
 - [Appium options for sauce](https://docs.saucelabs.com/dev/test-configuration-options/#mobile-app-appium-capabilities-required)
+- [All appium capabilities](https://appium.io/docs/en/writing-running-appium/caps/)
+- [More critical Appium resources](https://github.com/saucelabs-training/demo-java/blob/main/TRAINING.md)
