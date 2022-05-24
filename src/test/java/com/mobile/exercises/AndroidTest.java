@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -12,8 +13,11 @@ import org.junit.Test;
 import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.util.Assert;
+import static org.assertj.core.api.Assertions.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -42,17 +46,14 @@ public class AndroidTest {
     public void setup() {
         //Arrange
         capabilities = new MutableCapabilities();
-        /*
-         * Pick your device
-         * */
-        //Not specifying platformVersion or the exact device is the most likely to
-        //find a device in the cloud
-        capabilities.setCapability("platformName", "android");
-        capabilities.setCapability("deviceName", "Google Pixel.*");
+        capabilities.setCapability("platformName", "Android");
+        // pick a galaxy or pixel
+        capabilities.setCapability("deviceName", "(Samsung Galaxy S.*)|(Google Pixel.*)");
+        capabilities.setCapability("automationName", "UIAutomator2");
         capabilities.setCapability("idleTimeout", "90");
-        capabilities.setCapability("noReset", "true");
+        // https://appium.io/docs/en/writing-running-appium/caps/
         capabilities.setCapability("newCommandTimeout", "90");
-        capabilities.setCapability("appWaitActivity", "com.swaglabsmobileapp.MainActivity");
+        capabilities.setCapability("appWaitActivity", "com.saucelabs.mydemoapp.rn.MainActivity");
         capabilities.setCapability("name", name.getMethodName());
     }
 
@@ -61,7 +62,7 @@ public class AndroidTest {
         // numerous ways exist for setting app name
         // https://docs.saucelabs.com/dev/test-configuration-options/#app
         capabilities.setCapability("app",
-                "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
+                "storage:filename=Android-MyDemoAppRN.1.3.0.build-244.apk");
 
         driver = new AndroidDriver<>(
                 new URL("https://" + System.getenv("SAUCE_USERNAME") + ":" +
@@ -73,9 +74,11 @@ public class AndroidTest {
 
         //Act
         WebDriverWait wait = new WebDriverWait(getDriver(), 10000);
-        By usernameLocator = MobileBy.AccessibilityId("test-Username");
+        By backpack = MobileBy.xpath(
+                "//android.widget.TextView[contains(@text,'Backpack')]");
         //Assert
-        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameLocator));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(backpack));
+        assertThat(element.isDisplayed()).isTrue();
     }
 
     @Test
